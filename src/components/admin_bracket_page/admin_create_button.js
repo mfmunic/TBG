@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 class AdminCreateButton extends Component {
   goToCreate(history, event) {
-    this.props.history.push('/create');
+    this.props.history.push("/TBG/create");
   }
 
   render() {
@@ -11,7 +11,8 @@ class AdminCreateButton extends Component {
     return (
       <button
         className="btn btn-primary"
-        onClick={this.goToCreate.bind(this, history)}>
+        onClick={this.goToCreate.bind(this, history)}
+      >
         Create Tournament
       </button>
     );

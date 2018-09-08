@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 class AdminUpdateButton extends Component {
   goToUpdate(history, key, event) {
-    this.props.history.push(`/update?brkt=${key}`);
+    this.props.history.push({
+      pathname: "/TBG/update",
+      search: `?brkt=${key}`
+    });
   }
 
   render() {
@@ -12,7 +15,8 @@ class AdminUpdateButton extends Component {
     return (
       <button
         className="btn btn-primary"
-        onClick={this.goToUpdate.bind(this, history, brktKey)}>
+        onClick={this.goToUpdate.bind(this, history, brktKey)}
+      >
         Update
       </button>
     );

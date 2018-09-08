@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 class CancelButton extends Component {
   goToAdmin(history, event) {
-    this.props.history.push('/admin');
+    this.props.history.push("/TBG/admin");
   }
 
   render() {
@@ -11,7 +11,8 @@ class CancelButton extends Component {
     return (
       <button
         className="btn btn-primary"
-        onClick={this.goToAdmin.bind(this, history)}>
+        onClick={this.goToAdmin.bind(this, history)}
+      >
         Cancel
       </button>
     );

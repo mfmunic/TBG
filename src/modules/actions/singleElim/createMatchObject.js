@@ -9,13 +9,12 @@ module.exports = function createMatchObject(init) {
 
   let matches = {};
 
-  //   console.log('init', init);
   for (let i = 0; i < heatsTotal; i++) {
     for (let j = heat[i].noMatch; j > 0; j--) {
       matches[`match${heat[i].matches[j - 1]}`] = {
         heat: heat[i].heat,
-        winner: '',
-        loser: '',
+        winner: "",
+        loser: "",
         match: heat[i].matches[j - 1]
       };
     }
