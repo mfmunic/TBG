@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import UpdateHeader from './update_header';
-import UpdateBracketWindow from './update_bracket_window';
-import * as Update from '../../modules/actions/updateBracketPageActions';
-import { brktRef } from '../../config/firebase';
+import UpdateHeader from "./update_header";
+import UpdateBracketWindow from "./update_bracket_window";
+import * as Update from "../../modules/actions/updateBracketPageActions";
+import { brktRef } from "../../config/firebase";
 
 class BrktUpdate extends Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const path = window.location.search;
-    const pathArr = path.split('=');
+    const pathArr = path.split("=");
     const brktKey = pathArr[pathArr.length - 1];
     brktRef
-      .child('tests')
+      .child("tests")
       .child(brktKey)
-      .on('value', snapshot =>
+      .on("value", snapshot =>
         this.props.dispatch(Update.updateBrkt(snapshot.val(), brktKey))
       );
   }
@@ -24,7 +24,7 @@ class BrktUpdate extends Component {
     return (
       <div className="adminPg">
         <UpdateHeader />
-        {brktKey ? <UpdateBracketWindow /> : ''}
+        {brktKey ? <UpdateBracketWindow /> : ""}
       </div>
     );
   }

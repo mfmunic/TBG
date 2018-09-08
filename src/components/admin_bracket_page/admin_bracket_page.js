@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import BrktsOwnedList from './brkts_owned_list';
-import AdminHeader from './admin_header';
-import * as Admin from '../../modules/actions/adminBracketPageActions';
+import BrktsOwnedList from "./brkts_owned_list";
+import AdminHeader from "./admin_header";
+import * as Admin from "../../modules/actions/adminBracketPageActions";
 
 class BrktAdmin extends Component {
   componentWillMount() {

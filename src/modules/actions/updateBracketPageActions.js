@@ -1,6 +1,6 @@
 // import _ from 'lodash';
 
-import * as actionTypes from '../actionTypes';
+import * as actionTypes from "../actionTypes";
 
 export function updateBrkt(brkt, key) {
   return {
