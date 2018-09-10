@@ -2,7 +2,7 @@
 //Takes in matches object and adds extra player seeds
 //-------------------------------------------------------------------------------
 
-const _ = require('lodash');
+const _ = require("lodash");
 
 module.exports = function addExtraMatches(matchObj, init) {
   //create two arrays one for checking against and the other the extras
@@ -30,17 +30,19 @@ module.exports = function addExtraMatches(matchObj, init) {
       const extMatch = matchObj[`match${extMatchCt}`];
       if (mainArr.includes(mainMatch[`player${k}seed`])) {
         const arrPos = mainArr.indexOf(mainMatch[`player${k}seed`]);
-        mainMatch[`player${k}seed`] = '';
+        mainMatch[`player${k}seed`] = "";
         mainMatch.getFrom = extMatchCt;
         extMatch.player1seed = mainArr[arrPos];
         extMatch.player2seed = extArr[arrPos];
         extMatch.division = mainMatch.division;
         extMatch.main = false;
         extMatch.goesTo = mainHeatChk;
-        extMatch.goesToPos = 'upper';
+        extMatch.goesToPos = "upper";
         if (k === 2) {
-          extMatch.goesToPos = 'lower';
+          extMatch.goesToPos = "lower";
         }
+        extMatch.player1Points = 0;
+        extMatch.player2Points = 0;
         extMatchCt++;
       }
     }

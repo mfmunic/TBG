@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import _ from 'lodash';
-import CreateMatch from './create_matches';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import _ from "lodash";
+import UpdateMatch from "./update_matches";
 
 class UpdateBracketWindow extends Component {
   render() {
@@ -11,8 +11,8 @@ class UpdateBracketWindow extends Component {
       height: brktInfo.box.height
     };
     const polylineStyle = {
-      fill: 'none',
-      stroke: 'black'
+      fill: "none",
+      stroke: "black"
     };
     return (
       <div id="notSidebar">
@@ -20,7 +20,7 @@ class UpdateBracketWindow extends Component {
           <div className="brktBox" id="bBox" style={bBoxStyle}>
             {_.map(brktInfo.matches, match => {
               return (
-                <CreateMatch
+                <UpdateMatch
                   key={match.match}
                   data={{
                     ...match,

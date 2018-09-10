@@ -33,7 +33,7 @@ export function resetState() {
 }
 
 export function updateNoOfPlayers(noOfPlayers, playerNames) {
-  const brktInfo = getBrktInfo(noOfPlayers);
+  let brktInfo = getBrktInfo(noOfPlayers);
 
   playerNames = _.map(playerNames, (name, index) => {
     if (name.includes("<<Player ") || name === "") {
@@ -52,6 +52,8 @@ export function updateNoOfPlayers(noOfPlayers, playerNames) {
       playerNames.push(`<<Player ${i + 1}>>`);
     }
   }
+
+  brktInfo = addNames(brktInfo, playerNames);
 
   return {
     type: actionTypes.UPDATE_NOOFPLAYERS,
@@ -113,7 +115,14 @@ export function switchInput(inputType, noOfPlayers, playerNames) {
 
 export function addBrkt(newBrkt, brktName, playerNames) {
   playerNames = _.map(playerNames, (name, index) => {
-    return { name: name, seed: index + 1, position: index + 1 };
+    return {
+      name: name,
+      seed: index + 1,
+      position: index + 1,
+      wins: 0,
+      losses: 0,
+      pts: 0
+    };
   });
   const brkt = { brktInfo: newBrkt, brktName, playerNames };
   setBrkts(brkt);
