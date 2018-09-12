@@ -114,17 +114,25 @@ export function switchInput(inputType, noOfPlayers, playerNames) {
 //firbase specific
 
 export function addBrkt(newBrkt, brktName, playerNames) {
-  playerNames = _.map(playerNames, (name, index) => {
+  const newRecord = [];
+  for (let i = 0; i < newBrkt.heatsTotal; i++) {
+    newRecord.push(0);
+  }
+  const playerNamesObject = _.map(playerNames, (name, index) => {
     return {
       name: name,
       seed: index + 1,
       position: index + 1,
       wins: 0,
+      winRecord: newRecord,
       losses: 0,
-      pts: 0
+      lossRecord: newRecord,
+      pts: 0,
+      ptsRecord: newRecord
     };
   });
-  const brkt = { brktInfo: newBrkt, brktName, playerNames };
+  const brkt = { brktInfo: newBrkt, brktName, playerNames: playerNamesObject };
+
   setBrkts(brkt);
   return {
     type: actionTypes.PUBLISHED_BRKT,

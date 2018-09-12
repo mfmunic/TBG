@@ -8,7 +8,14 @@ class UpdateMatch extends Component {
     const pathArr = path.split("=");
     const brktKey = pathArr[pathArr.length - 1];
     this.props.dispatch(
-      Update.updatePoints(match, matchNo, playerNo, event.target.value, brktKey)
+      Update.updatePoints(
+        match,
+        matchNo,
+        playerNo,
+        event.target.value,
+        this.props.updateBracket.playerNames,
+        brktKey
+      )
     );
   }
 
@@ -72,7 +79,8 @@ class UpdateMatch extends Component {
 
 function mapStateToProps(state) {
   return {
-    createBracket: state.createBracket
+    createBracket: state.createBracket,
+    updateBracket: state.updateBracket
   };
 }
 

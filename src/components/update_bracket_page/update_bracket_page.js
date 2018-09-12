@@ -19,6 +19,15 @@ class BrktUpdate extends Component {
       );
   }
 
+  componentWillUnmount() {
+    const brktKey = this.props.updateBracket.brktKey;
+
+    brktRef
+      .child("tests")
+      .child(brktKey)
+      .off();
+  }
+
   render() {
     const { brktKey } = this.props.updateBracket;
     return (
