@@ -1,8 +1,8 @@
-import * as actionTypes from '../actionTypes';
+import * as actionTypes from "../actionTypes";
 
 const initialState = {
-  brktName: '',
-  brktKey: ''
+  brktName: "",
+  brktKey: ""
 };
 
 export default function(state = initialState, action = {}) {
@@ -16,6 +16,11 @@ export default function(state = initialState, action = {}) {
         brktKey: action.payload.key
       };
 
+    case `${actionTypes.COMPONENT_CLEANUP}`:
+      return {
+        brktName: "",
+        brktKey: ""
+      };
     default:
       return state;
   }
