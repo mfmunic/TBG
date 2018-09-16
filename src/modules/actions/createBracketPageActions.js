@@ -1,10 +1,11 @@
-import _ from 'lodash';
+import _ from "lodash";
 
-import * as actionTypes from '../actionTypes';
-import getBrktInfo from './singleElim/getBrktInfo.js';
-import addNames from './singleElim/addNames.js';
-import setBrkts from './firebase/setBrkts';
-import { tArr, bArr, gArr } from './utils/titleWords.js';
+import * as actionTypes from "../actionTypes";
+import getBrktInfo from "./singleElim/getBrktInfo.js";
+import addNames from "./singleElim/addNames.js";
+import setBrkts from "./firebase/setBrkts";
+import { tArr, bArr, gArr } from "./utils/titleWords.js";
+import { initialEditables } from "./utils/initEditables";
 
 export function randomTorName() {
   let tWord = tArr[_.random(0, tArr.length - 1)];
@@ -33,10 +34,10 @@ export function resetState() {
 }
 
 export function updateNoOfPlayers(noOfPlayers, playerNames) {
-  const brktInfo = getBrktInfo(noOfPlayers);
+  let brktInfo = getBrktInfo(noOfPlayers);
 
   playerNames = _.map(playerNames, (name, index) => {
-    if (name.includes('<<Player ') || name === '') {
+    if (name.includes("<<Player ") || name === "") {
       name = `<<Player ${index + 1}>>`;
     }
     return name;
@@ -53,6 +54,8 @@ export function updateNoOfPlayers(noOfPlayers, playerNames) {
     }
   }
 
+  brktInfo = addNames(brktInfo, playerNames);
+
   return {
     type: actionTypes.UPDATE_NOOFPLAYERS,
     payload: { noOfPlayers, brktInfo, playerNames }
@@ -62,9 +65,13 @@ export function updateNoOfPlayers(noOfPlayers, playerNames) {
 export function updatePlayerNames(players) {
   let arrPlayers = [];
 
-  if (players !== '') {
-    arrPlayers = players.split('\n');
+  if (players !== "") {
+    arrPlayers = players.split("\n");
   }
+
+  _.forEach(arrPlayers, player => {
+    player.trim();
+  });
 
   let brktInfo = getBrktInfo(arrPlayers.length);
   brktInfo = addNames(brktInfo, arrPlayers);
@@ -76,11 +83,11 @@ export function updatePlayerNames(players) {
 }
 
 export function switchInput(inputType, noOfPlayers, playerNames) {
-  if (inputType === 'Number') {
-    inputType = 'Names';
+  if (inputType === "Number") {
+    inputType = "Names";
 
     playerNames = _.map(playerNames, (name, index) => {
-      if (name.includes('<<Player ') || name === '') {
+      if (name.includes("<<Player ") || name === "") {
         name = `<<Player ${index + 1}>>`;
       }
       return name;
@@ -97,7 +104,7 @@ export function switchInput(inputType, noOfPlayers, playerNames) {
       }
     }
   } else {
-    inputType = 'Number';
+    inputType = "Number";
   }
   return {
     type: actionTypes.SWITCH_INPUT_TYPE,
@@ -108,25 +115,29 @@ export function switchInput(inputType, noOfPlayers, playerNames) {
 //firbase specific
 
 export function addBrkt(newBrkt, brktName, playerNames) {
-  const brkt = { brktInfo: newBrkt, brktName, playerNames };
+  initialEditables(newBrkt);
+  const newRecord = [];
+  for (let i = 0; i < newBrkt.heatsTotal; i++) {
+    newRecord.push(0);
+  }
+  const playerNamesObject = _.map(playerNames, (name, index) => {
+    return {
+      name: name,
+      seed: index + 1,
+      position: index + 1,
+      wins: 0,
+      winRecord: newRecord,
+      losses: 0,
+      lossRecord: newRecord,
+      pts: 0,
+      ptsRecord: newRecord
+    };
+  });
+  const brkt = { brktInfo: newBrkt, brktName, playerNames: playerNamesObject };
+
   setBrkts(brkt);
   return {
     type: actionTypes.PUBLISHED_BRKT,
     payload: brkt
   };
 }
-
-// --- not actually for this file
-// export const completeToDo = completeToDoId => async dispatch => {
-//   todosRef.child(completeToDoId).remove();
-// };
-
-// export const fetchToDos = () => async dispatch => {
-//   todosRef.on('value', snapshot => {
-//     dispatch({
-//       type: FETCH_TODOS,
-//       payload: snapshot.val()
-//     });
-//   });
-// };
-// --- not actually for this file

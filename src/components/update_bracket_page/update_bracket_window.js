@@ -1,9 +1,19 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import _ from 'lodash';
-import CreateMatch from './create_matches';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import _ from "lodash";
+import UpdateMatch from "./update_matches";
+import * as Update from "../../modules/actions/updateBracketPageActions";
 
 class UpdateBracketWindow extends Component {
+  componentDidMount() {
+    window.addEventListener("beforeunload", this.componentCleanup);
+  }
+
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch(Update.componentCleanup());
+    window.removeEventListener("beforeunload", this.componentCleanup); // remove the event handler for normal unmounting
+  }
   render() {
     const brktInfo = this.props.updateBracket;
     const bBoxStyle = {
@@ -11,16 +21,16 @@ class UpdateBracketWindow extends Component {
       height: brktInfo.box.height
     };
     const polylineStyle = {
-      fill: 'none',
-      stroke: 'black'
+      fill: "none",
+      stroke: "black"
     };
     return (
-      <div id="notSidebar">
+      <div id="notSidebar" className="col-lg-10">
         <div className="brktWindow col-sm align-self-start">
           <div className="brktBox" id="bBox" style={bBoxStyle}>
             {_.map(brktInfo.matches, match => {
               return (
-                <CreateMatch
+                <UpdateMatch
                   key={match.match}
                   data={{
                     ...match,
