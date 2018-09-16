@@ -30,8 +30,12 @@ module.exports = function addExtraMatches(matchObj, init) {
       const extMatch = matchObj[`match${extMatchCt}`];
       if (mainArr.includes(mainMatch[`player${k}seed`])) {
         const arrPos = mainArr.indexOf(mainMatch[`player${k}seed`]);
+        if (k === 1) {
+          mainMatch.player1GetFrom = extMatchCt;
+        }
         mainMatch[`player${k}seed`] = "";
-        mainMatch.getFrom = extMatchCt;
+        mainMatch.player1Points = 0;
+        mainMatch.player2Points = 0;
         extMatch.player1seed = mainArr[arrPos];
         extMatch.player2seed = extArr[arrPos];
         extMatch.division = mainMatch.division;
@@ -39,6 +43,7 @@ module.exports = function addExtraMatches(matchObj, init) {
         extMatch.goesTo = mainHeatChk;
         extMatch.goesToPos = "upper";
         if (k === 2) {
+          mainMatch.player2GetFrom = extMatchCt;
           extMatch.goesToPos = "lower";
         }
         extMatch.player1Points = 0;

@@ -5,6 +5,7 @@ import getBrktInfo from "./singleElim/getBrktInfo.js";
 import addNames from "./singleElim/addNames.js";
 import setBrkts from "./firebase/setBrkts";
 import { tArr, bArr, gArr } from "./utils/titleWords.js";
+import { initialEditables } from "./utils/initEditables";
 
 export function randomTorName() {
   let tWord = tArr[_.random(0, tArr.length - 1)];
@@ -114,6 +115,7 @@ export function switchInput(inputType, noOfPlayers, playerNames) {
 //firbase specific
 
 export function addBrkt(newBrkt, brktName, playerNames) {
+  initialEditables(newBrkt);
   const newRecord = [];
   for (let i = 0; i < newBrkt.heatsTotal; i++) {
     newRecord.push(0);

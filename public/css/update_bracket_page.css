@@ -9,6 +9,14 @@
   padding-left: 10px;
 }
 
+#updateNotHeader {
+  display: flex;
+}
+
+.updateSidebar {
+  height: 100%;
+}
+
 #notSidebar {
   width: 100%;
   padding: 0;
@@ -97,10 +105,21 @@ polyline {
 .pointsInput {
   height: 100%;
   width: 100%;
+  padding: 0 0;
 }
 
+/* removes arrows in input */
 input[type="number"].pointsInput::-webkit-inner-spin-button,
 input[type="number"].pointsInput::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.playerStanding {
+  display: flex;
+  justify-content: space-between;
+}
+
+.playerStanding p {
+  margin: 3px 0;
 }

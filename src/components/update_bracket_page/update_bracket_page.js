@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import UpdateHeader from "./update_header";
 import UpdateBracketWindow from "./update_bracket_window";
+import UpdateSidebar from "./update_sidebar";
 import * as Update from "../../modules/actions/updateBracketPageActions";
 import { brktRef } from "../../config/firebase";
 
@@ -33,7 +34,14 @@ class BrktUpdate extends Component {
     return (
       <div className="adminPg">
         <UpdateHeader />
-        {brktKey ? <UpdateBracketWindow /> : ""}
+        {brktKey ? (
+          <div id="updateNotHeader">
+            <UpdateSidebar />
+            <UpdateBracketWindow />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     );
   }
