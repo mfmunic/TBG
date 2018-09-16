@@ -7,7 +7,6 @@ import {
 } from "./utils/updatePlayers";
 import * as actionTypes from "../actionTypes";
 import { brktRef } from "../../config/firebase";
-import * as actionTypes from "../actionTypes";
 
 export function updateBrkt(brkt, key) {
   return {
