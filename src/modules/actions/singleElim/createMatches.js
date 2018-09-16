@@ -1,4 +1,4 @@
-const findBox = require('./createBox.js');
+const findBox = require("./createBox.js");
 
 //-------------------------------------------------------
 //create the matches for the bracket
@@ -38,7 +38,9 @@ function createMatches(bracket) {
     matchNo: bracket.heats[0].matches[0],
     player1: 1,
     player2: 2,
-    winner: '',
+    winner: "",
+    player1Points: 0,
+    player2Points: 0,
     xLoc: box.width - rndWid,
     yLoc: box.height / 2 - rndHgt / 2
   };
@@ -64,7 +66,9 @@ function createMatches(bracket) {
         matchNo: nextMatch,
         player1: bracket.heats[i].matches[j].player1,
         player2: mainArr[play2Loc],
-        winner: ''
+        winner: "",
+        player1Points: 0,
+        player2Points: 0
       };
 
       //xy coord for main first extra second the middle last
@@ -73,11 +77,12 @@ function createMatches(bracket) {
           (bracket.heats[i + 1].heat - 1) * (rndWid + svgWid);
         if (bracket.extra >= bracket.main / 2) {
           bracket.heats[i + 1].matches[roundPH].yLoc =
-            box.height / bracket.heats[i + 1].noMatch * (roundPH + 1) -
+            (box.height / bracket.heats[i + 1].noMatch) * (roundPH + 1) -
             rndHgt * 1.5;
         } else {
           bracket.heats[i + 1].matches[roundPH].yLoc =
-            box.height / bracket.heats[i + 1].noMatch * (roundPH + 1) - rndHgt;
+            (box.height / bracket.heats[i + 1].noMatch) * (roundPH + 1) -
+            rndHgt;
         }
 
         mainCol = i;
@@ -100,7 +105,9 @@ function createMatches(bracket) {
         matchNo: nextMatch,
         player1: bracket.heats[i].matches[j].player2,
         player2: mainArr[play2Loc],
-        winner: ''
+        winner: "",
+        player1Points: 0,
+        player2Points: 0
       };
 
       //xy coord for main first extra second the middle last
@@ -109,11 +116,12 @@ function createMatches(bracket) {
           (bracket.heats[i + 1].heat - 1) * (rndWid + svgWid);
         if (bracket.extra >= bracket.main / 2) {
           bracket.heats[i + 1].matches[roundPH].yLoc =
-            box.height / bracket.heats[i + 1].noMatch * (roundPH + 1) -
+            (box.height / bracket.heats[i + 1].noMatch) * (roundPH + 1) -
             rndHgt * 1.5;
         } else {
           bracket.heats[i + 1].matches[roundPH].yLoc =
-            box.height / bracket.heats[i + 1].noMatch * (roundPH + 1) - rndHgt;
+            (box.height / bracket.heats[i + 1].noMatch) * (roundPH + 1) -
+            rndHgt;
         }
       }
 
@@ -210,7 +218,7 @@ function createMatches(bracket) {
           matchNo: preHeat.matches[i],
           player1: mainHeat.matches[j].player1,
           player2: extArr[i],
-          winner: '',
+          winner: "",
           xLoc: mainHeat.matches[j].xLoc - (rndWid + svgWid),
           yLoc: mainHeat.matches[j].yLoc - rndHgt / 2
         };
@@ -247,7 +255,7 @@ function createMatches(bracket) {
           matchNo: preHeat.matches[i],
           player1: mainHeat.matches[j].player2,
           player2: extArr[i],
-          winner: '',
+          winner: "",
           xLoc: mainHeat.matches[j].xLoc - (rndWid + svgWid),
           yLoc: mainHeat.matches[j].yLoc + rndHgt / 2
         };
