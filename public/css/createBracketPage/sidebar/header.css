@@ -1,4 +1,4 @@
-#createHeader {
+.createHeader {
   width: 100%;
   border-bottom: 3px double #c0c0c0;
   min-height: 60px;
@@ -22,11 +22,15 @@
 }
 
 #brktName {
-  /* width: 25%; */
+  width: 100%;
   font-size: 24px;
   font-weight: bold;
   border: none;
   padding-left: 5px;
+}
+
+#brktName:focus {
+  outline-color: #ffd800;
 }
 
 #brktName:hover {
@@ -53,7 +57,7 @@
   color: lightgray;
 }
 
-#createHeaderBtns {
+.headerBtns {
   display: flex;
   align-self: flex-end;
   margin-bottom: 3px;

@@ -5,14 +5,30 @@ import { connect } from "react-redux";
 // import _ from "lodash";
 
 class Player extends Component {
+  positionith(pos) {
+    switch (+pos) {
+      case 1:
+        return "st";
+      case 2:
+        return "nd";
+      case 3:
+        return "rd";
+      default:
+        return "th";
+    }
+  }
+
   render() {
-    const { name, wins, pts } = this.props.playerData;
+    const { name, position, pts } = this.props.playerData;
+    const posEnd = this.positionith(position);
     return (
       <div className="playerStanding">
-        <p>{name}</p>
         <p>
-          {wins}/{pts}
+          {position}
+          {posEnd}
         </p>
+        <p>{name}</p>
+        <p>{pts}</p>
       </div>
     );
   }

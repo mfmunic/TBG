@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import * as Create from '../../modules/actions/createBracketPageActions';
+import * as Create from "../../modules/actions/createBracketPageActions";
 
-import CancelButton from '../utils/cancel_button';
-import CreateCreateButton from './create_create_button';
+import CancelButton from "../utils/cancel_button";
+import CreateCreateButton from "./create_create_button";
 
 class CreateHeader extends Component {
   componentWillMount() {
     this.props.dispatch(Create.randomTorName());
   }
   updateBrktName(event) {
-    if (event.target.value === '') {
+    if (event.target.value === "") {
       this.props.dispatch(Create.randomTorName());
     } else {
       this.props.dispatch(Create.updateTorName(event.target.value));
@@ -21,11 +21,11 @@ class CreateHeader extends Component {
   render() {
     const { brktName } = this.props.createBracket;
     return (
-      <div id="createHeader">
+      <div className="createHeader">
         <div id="torName">
           <p>Name:</p>
           <input
-            className="form-control"
+            // className="form-control"
             id="brktName"
             type="text"
             onChange={this.updateBrktName.bind(this)}
@@ -33,7 +33,7 @@ class CreateHeader extends Component {
           />
         </div>
 
-        <div id="createHeaderBtns">
+        <div className="headerBtns">
           <CreateCreateButton />
           <CancelButton />
         </div>

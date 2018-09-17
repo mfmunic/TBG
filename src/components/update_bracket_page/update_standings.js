@@ -11,7 +11,7 @@ class Standings extends Component {
     const playerList = _.map(sortedPlayerList, (player, index) => {
       return <Player key={index} playerData={player} />;
     });
-    return <div>{playerList}</div>;
+    return <div className="standings">{playerList}</div>;
   }
 }
 

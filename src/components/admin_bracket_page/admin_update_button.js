@@ -14,7 +14,7 @@ class AdminUpdateButton extends Component {
     const { brktKey } = this.props;
     return (
       <button
-        className="btn btn-primary"
+        className="btn btn-primary button"
         onClick={this.goToUpdate.bind(this, history, brktKey)}
       >
         Update
