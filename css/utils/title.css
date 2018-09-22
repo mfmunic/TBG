@@ -1,0 +1,23 @@
+#title {
+  display: flex;
+  width: 262px;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+#torTitle {
+  color: #012551;
+  text-shadow: 0 0 1px #fff;
+}
+
+#braTitle {
+  margin-left: 1em;
+  color: #012551;
+  text-shadow: 0 0 1px #fff;
+}
+
+#genTitle {
+  margin-left: 2em;
+  color: #012551;
+  text-shadow: 0 0 1px #fff;
+}

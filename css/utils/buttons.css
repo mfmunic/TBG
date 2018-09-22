@@ -1,0 +1,22 @@
+.button {
+  border-radius: 0;
+  background-color: #c0c0c0;
+  color: #012551;
+  border: 1px solid #012551;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: #012551;
+  color: #c0c0c0;
+  border: 1px solid #012551;
+  box-shadow: 0 0 8px #ffd800;
+}
+
+.button:disabled {
+  border-radius: 0;
+  background-color: #c0c0c0;
+  color: #012551;
+  border: 1px solid #012551;
+  font-weight: bold;
+}

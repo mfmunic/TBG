@@ -1,0 +1,109 @@
+@import "./sidebar.css";
+@import "./header.css";
+
+.cbrktpg {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.form-group {
+  margin: 0 auto;
+  padding-left: 10px;
+}
+
+#updateNotHeader {
+  display: flex;
+}
+
+.brktWindow {
+  height: calc(100vh - 61px);
+  /* display: flex; */
+  /* justify-content: center; */
+  overflow: auto;
+  padding: 0;
+}
+
+.brktBox {
+  position: relative;
+  margin: 0 auto;
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.brktBox:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
+.match {
+  background-color: #fff;
+  border: 1px solid grey;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 1px 1px 3px grey;
+}
+
+polyline {
+  stroke: black;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+/*individual rounds*/
+.col-2 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.matchLabel {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+  height: 18px;
+  padding: 0 4px;
+}
+
+.matchUpdate {
+  font-size: 10px;
+}
+
+.pointsUpdateLabel {
+  font-size: 10px;
+}
+
+.pointsUpdate {
+  border-left: 1px solid grey;
+  height: 50px;
+  width: 32px;
+  text-align: center;
+}
+
+.play1Points {
+  border-bottom: 1px solid black;
+  height: 25px;
+  padding: 1px 1px;
+}
+
+.play2Points {
+  height: 25px;
+  padding: 1px 1px;
+}
+
+.pointsInput {
+  height: 100%;
+  width: 100%;
+  padding: 0 0;
+}
+
+/* removes arrows in input */
+input[type="number"].pointsInput::-webkit-inner-spin-button,
+input[type="number"].pointsInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
