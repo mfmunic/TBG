@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as Admin from '../../modules/actions/adminBracketPageActions';
-import AdminUpdateButton from './admin_update_button';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as Admin from "../../modules/actions/adminBracketPageActions";
+import AdminUpdateButton from "./admin_update_button";
 
 class BrktInfoCard extends Component {
   deleteBracket(key, event) {
@@ -11,15 +11,20 @@ class BrktInfoCard extends Component {
   render() {
     const own = this.props.data;
     return (
-      <div className="card col-sm-12">
-        <p>Total Players: {own.brktInfo.total}</p>
-        <p>Name: {own.brktName}</p>
-        <AdminUpdateButton brktKey={own.key} />
-        <button
-          className="btn btn-primary"
-          onClick={this.deleteBracket.bind(this, own.key)}>
-          Delete
-        </button>
+      <div className="card brktCard">
+        <h3 className="cardBrktName">{own.brktName}</h3>
+        <div className="cardInfo">
+          <p>Total Players: {own.brktInfo.total}</p>
+        </div>
+        <div className="cardButtonHolder">
+          <AdminUpdateButton brktKey={own.key} />
+          <button
+            className="btn btn-primary button"
+            onClick={this.deleteBracket.bind(this, own.key)}
+          >
+            Delete
+          </button>
+        </div>
       </div>
     );
   }

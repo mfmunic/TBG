@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as Create from '../../modules/actions/createBracketPageActions';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as Create from "../../modules/actions/createBracketPageActions";
 
 class CreateCreateButton extends Component {
   createBracket(brktInfo, brktName, playerNames, event) {
@@ -19,7 +19,7 @@ class CreateCreateButton extends Component {
       <div>
         {noOfPlayers > 1 ? (
           <button
-            className="btn btn-primary"
+            className="btn btn-primary button"
             id="createBtn"
             type="submit"
             onClick={this.createBracket.bind(
@@ -27,11 +27,12 @@ class CreateCreateButton extends Component {
               brktInfo,
               brktName,
               playerNames
-            )}>
+            )}
+          >
             Create Bracket
           </button>
         ) : (
-          <button className="btn btn-primary" id="createBtn" disabled>
+          <button className="btn button" id="createBtn" disabled>
             Create Bracket
           </button>
         )}

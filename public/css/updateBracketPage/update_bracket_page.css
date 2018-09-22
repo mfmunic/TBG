@@ -1,3 +1,6 @@
+@import "./sidebar.css";
+@import "./header.css";
+
 .cbrktpg {
   width: 100vw;
   height: 100vh;
@@ -11,16 +14,6 @@
 
 #updateNotHeader {
   display: flex;
-}
-
-.updateSidebar {
-  height: 100%;
-}
-
-#notSidebar {
-  width: 100%;
-  padding: 0;
-  height: 100vh;
 }
 
 .brktWindow {
@@ -113,13 +106,4 @@ input[type="number"].pointsInput::-webkit-inner-spin-button,
 input[type="number"].pointsInput::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-.playerStanding {
-  display: flex;
-  justify-content: space-between;
-}
-
-.playerStanding p {
-  margin: 3px 0;
 }

@@ -10,7 +10,7 @@ class AdminCreateButton extends Component {
     const { history } = this.props;
     return (
       <button
-        className="btn btn-primary"
+        className="btn btn-primary button adminHeaderButton"
         onClick={this.goToCreate.bind(this, history)}
       >
         Create Tournament

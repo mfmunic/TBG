@@ -24,7 +24,6 @@ export function updatePoints(
   brktKey
 ) {
   match[`player${playerNo}Points`] = +points;
-
   const updatedPlayerPoints = updatePlayerPoints(
     match,
     playerNo,

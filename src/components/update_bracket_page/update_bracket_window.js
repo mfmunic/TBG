@@ -25,7 +25,7 @@ class UpdateBracketWindow extends Component {
       stroke: "black"
     };
     return (
-      <div id="notSidebar" className="col-lg-10">
+      <div className="col-lg-10 notSidebar">
         <div className="brktWindow col-sm align-self-start">
           <div className="brktBox" id="bBox" style={bBoxStyle}>
             {_.map(brktInfo.matches, match => {
