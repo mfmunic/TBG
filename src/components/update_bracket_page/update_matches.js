@@ -79,19 +79,15 @@ class UpdateMatch extends Component {
               <input
                 className="pointsInput form-control"
                 type="number"
-                min="2"
-                max="256"
                 onChange={this.updateNumber.bind(this, match, 1, matchObj)}
-                value={player1Points ? player1Points : ""}
+                value={+player1Points}
               />
             ) : (
               <input
                 className="pointsInput form-control"
                 type="number"
-                min="2"
-                max="256"
                 onChange={this.updateNumber.bind(this, match, 1, matchObj)}
-                value={player1Points ? player1Points : ""}
+                value={+player1Points}
                 readOnly
               />
             )}
@@ -101,19 +97,15 @@ class UpdateMatch extends Component {
               <input
                 className="pointsInput form-control"
                 type="number"
-                min="2"
-                max="256"
                 onChange={this.updateNumber.bind(this, match, 2, matchObj)}
-                value={player2Points ? player2Points : ""}
+                value={+player2Points}
               />
             ) : (
               <input
                 className="pointsInput form-control"
                 type="number"
-                min="2"
-                max="256"
                 onChange={this.updateNumber.bind(this, match, 2, matchObj)}
-                value={player2Points ? player2Points : ""}
+                value={+player2Points}
                 readOnly
               />
             )}
