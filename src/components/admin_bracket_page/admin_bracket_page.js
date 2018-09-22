@@ -14,7 +14,9 @@ class BrktAdmin extends Component {
     return (
       <div className="adminPg">
         <AdminHeader />
-        <BrktsOwnedList />
+        <div className="brktsOwnedHolder">
+          <BrktsOwnedList />
+        </div>
       </div>
     );
   }

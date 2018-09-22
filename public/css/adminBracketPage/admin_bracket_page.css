@@ -1,0 +1,53 @@
+@import "./admin_header.css";
+
+.adminPg {
+  width: 100vw;
+  height: 100vh;
+}
+
+.brktsOwnedHolder {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: calc(100vh - 229px);
+  overflow-y: auto;
+  background-color: #c0c0c0;
+  padding: 10px 10px;
+}
+
+.brktsOwned {
+  margin: 0 auto;
+  max-width: 1600px;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.brktCard {
+  display: flex;
+  margin: 10px 10px;
+  padding: 10px 10px;
+  width: 300px;
+  height: 208px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.brktCard:hover {
+  margin: 8px 12px 12px 8px;
+  padding: 8px 8px;
+  box-shadow: 2px 2px 4px rgb(59, 59, 59);
+}
+
+.cardBrktName {
+  color: #012551;
+  text-align: center;
+}
+
+.cardButtonHolder {
+  display: flex;
+  justify-content: space-between;
+}

@@ -10,7 +10,7 @@ class CancelButton extends Component {
     const { history } = this.props;
     return (
       <button
-        className="btn btn-primary"
+        className="btn btn-primary button"
         onClick={this.goToAdmin.bind(this, history)}
       >
         Cancel

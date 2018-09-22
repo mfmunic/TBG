@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import _ from 'lodash';
-import CreateMatch from './create_matches';
-import CreateHeader from './create_header';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import _ from "lodash";
+import CreateMatch from "./create_matches";
+import CreateHeader from "./create_header";
 
 class CreateBracketWindow extends Component {
   render() {
@@ -12,11 +12,11 @@ class CreateBracketWindow extends Component {
       height: brktInfo.box.height
     };
     const polylineStyle = {
-      fill: 'none',
-      stroke: 'black'
+      fill: "none",
+      stroke: "black"
     };
     return (
-      <div id="notSidebar" className="col-lg-10">
+      <div className="col-lg-10 notSidebar">
         <CreateHeader />
         <div className="brktWindow col-sm align-self-start">
           <div className="brktBox" id="bBox" style={bBoxStyle}>

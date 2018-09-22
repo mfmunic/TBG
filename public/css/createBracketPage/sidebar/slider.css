@@ -30,7 +30,7 @@
 
 .slider:before {
   position: absolute;
-  content: '';
+  content: "";
   height: 14px;
   width: 14px;
   left: 2px;
@@ -41,11 +41,11 @@
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: #ffd800;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px #ffd800;
 }
 
 input:checked + .slider:before {
