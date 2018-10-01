@@ -2,42 +2,57 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
 import * as Update from "../../modules/actions/updateBracketPageActions";
+import * as Single from "../../modules/actions/singleElim/updateSingleElimActions";
+import { brktRef } from "../../config/firebase";
 
 class UpdateMatch extends Component {
   updateNumber(matchNo, playerNo, match, event) {
-    const {
-      dispatch,
-      updateBracket,
-      updateBracket: { playerNames, heats }
-    } = this.props;
+    const updatedObject = [];
     const path = window.location.search;
     const pathArr = path.split("=");
     const brktKey = pathArr[pathArr.length - 1];
-    dispatch(
-      Update.updatePoints(
-        match,
-        matchNo,
-        playerNo,
-        event.target.value,
-        playerNames,
-        brktKey
-      )
+    updatedObject.push(
+      Single.updatePoints(match, matchNo, playerNo, event.target.value, brktKey)
     );
+    // const { updateBracket, dispatch } = this.props;
+    // const clonedBracket = _.cloneDeep(updateBracket);
+    // dispatch(
+    //   Update.updateEntireBracket(
+    //     clonedBracket,
+    //     matchNo,
+    //     playerNo,
+    //     event.target.value
+    //   )
+    // );
 
-    if (match.player1Points && match.player2Points) {
-      const heatInfo = _.find(heats, { heat: match.heat });
-      const seedsArr = _.flatMap(heatInfo.matches, matchNo => {
-        const newArr = [];
-        newArr.push(updateBracket.matches[`match${matchNo}`].player1seed);
-        newArr.push(updateBracket.matches[`match${matchNo}`].player2seed);
-        return newArr;
-      });
-
-      dispatch(
-        Update.winnerLoser(match, matchNo, playerNames, seedsArr, brktKey)
-      );
+    if (
+      match.player1Points !== undefined &&
+      match.player2Points !== undefined
+    ) {
+      updatedObject.push(Single.determineWinner(match, brktKey));
     }
+
+    const updatedUserData = _.reduce(updatedObject, (accumulator, value) => {
+      return _.merge(accumulator, value);
+    });
+    console.log(updatedUserData);
+    //   dispatch(
+    //     Update.winnerLoser(match, matchNo, playerNames, seedsArr, brktKey)
+    //   );
+    // }
+
+    brktRef.update(updatedUserData, function(error) {
+      if (error) {
+        console.log("Error updating data:", error);
+      }
+    });
   }
+
+  // componentDidUpdate() {
+  //   const { updateBracket, dispatch } = this.props;
+  //   const clonedBracket = _.cloneDeep(updateBracket);
+  //   dispatch(Update.updateEntireBracket(clonedBracket));
+  // }
 
   render() {
     const {
@@ -48,11 +63,11 @@ class UpdateMatch extends Component {
       match,
       player1Name,
       player2Name,
-      player1Points,
-      player2Points,
       player1Edit,
       player2Edit
     } = this.props.data;
+
+    let { player1Points, player2Points } = this.props.data;
 
     const matchStyle = {
       top: yLoc,
@@ -63,6 +78,13 @@ class UpdateMatch extends Component {
 
     const matchObj = this.props.data;
 
+    player1Points === undefined
+      ? (player1Points = "")
+      : (player1Points = +player1Points);
+
+    player2Points === undefined
+      ? (player2Points = "")
+      : (player2Points = +player2Points);
     return (
       <div className="match" id={`match${match}`} style={matchStyle}>
         <div className="matchLabel">
@@ -80,14 +102,14 @@ class UpdateMatch extends Component {
                 className="pointsInput form-control"
                 type="number"
                 onChange={this.updateNumber.bind(this, match, 1, matchObj)}
-                value={+player1Points}
+                value={player1Points}
               />
             ) : (
               <input
                 className="pointsInput form-control"
                 type="number"
                 onChange={this.updateNumber.bind(this, match, 1, matchObj)}
-                value={+player1Points}
+                value={player1Points}
                 readOnly
               />
             )}
@@ -98,14 +120,14 @@ class UpdateMatch extends Component {
                 className="pointsInput form-control"
                 type="number"
                 onChange={this.updateNumber.bind(this, match, 2, matchObj)}
-                value={+player2Points}
+                value={player2Points}
               />
             ) : (
               <input
                 className="pointsInput form-control"
                 type="number"
                 onChange={this.updateNumber.bind(this, match, 2, matchObj)}
-                value={+player2Points}
+                value={player2Points}
                 readOnly
               />
             )}

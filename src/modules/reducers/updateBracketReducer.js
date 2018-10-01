@@ -7,7 +7,7 @@ const initialState = {
 
 export default function(state = initialState, action = {}) {
   switch (action.type) {
-    case `${actionTypes.UPDATE_BRKT}`:
+    case `${actionTypes.UPDATE_FROM_FIREBASE}`:
       return {
         ...state,
         ...action.payload.brkt.brktInfo,

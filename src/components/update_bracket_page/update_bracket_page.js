@@ -8,7 +8,7 @@ import * as Update from "../../modules/actions/updateBracketPageActions";
 import { brktRef } from "../../config/firebase";
 
 class BrktUpdate extends Component {
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     const path = window.location.search;
     const pathArr = path.split("=");
     const brktKey = pathArr[pathArr.length - 1];

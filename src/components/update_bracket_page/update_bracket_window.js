@@ -9,6 +9,12 @@ class UpdateBracketWindow extends Component {
     window.addEventListener("beforeunload", this.componentCleanup);
   }
 
+  // componentWillReceiveProps() {
+  //   const { updateBracket, dispatch } = this.props;
+  //   const clonedBracket = _.cloneDeep(updateBracket);
+  //   dispatch(Update.updateEntireBracket(clonedBracket));
+  // }
+
   componentWillUnmount() {
     const { dispatch } = this.props;
     dispatch(Update.componentCleanup());

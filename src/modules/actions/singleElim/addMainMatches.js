@@ -35,7 +35,7 @@ module.exports = function addMainMatches(matchObj, init) {
     const prev = matchObj[`match${matchInc}`];
     if (prev.player2seed !== "") {
       curr.player1seed = prev.player2seed;
-      curr.player1Points = 0;
+      curr.player1Points = null;
       prev.player2seed = "";
       prev.player2GetFrom = k;
       curr.goesTo = matchInc;
@@ -47,7 +47,7 @@ module.exports = function addMainMatches(matchObj, init) {
       }
     } else {
       curr.player1seed = prev.player1seed;
-      curr.player2Points = 0;
+      curr.player2Points = null;
       prev.player1seed = "";
       prev.player1GetFrom = k;
       curr.goesTo = matchInc;
