@@ -3,8 +3,4 @@
 @import "./createBracketPage/create_bracket_page.css";
 @import "./utils/title.css";
 @import "./utils/buttons.css";
-
-/* body {
-  margin: 0 0;
-  display: flex;
-} */
+@import "./utils/medTitle.css";

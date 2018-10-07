@@ -135,9 +135,6 @@ export function addBrkt(newBrkt, brktName, playerNames) {
   });
   const brkt = { brktInfo: newBrkt, brktName, playerNames: playerNamesObject };
 
-  setBrkts(brkt);
-  return {
-    type: actionTypes.PUBLISHED_BRKT,
-    payload: brkt
-  };
+  const brktKey = setBrkts(brkt);
+  return brktKey;
 }

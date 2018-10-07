@@ -7,52 +7,24 @@ import { brktRef } from "../../config/firebase";
 
 class UpdateMatch extends Component {
   updateNumber(matchNo, playerNo, match, event) {
-    const updatedObject = [];
     const path = window.location.search;
     const pathArr = path.split("=");
     const brktKey = pathArr[pathArr.length - 1];
-    updatedObject.push(
-      Single.updatePoints(match, matchNo, playerNo, event.target.value, brktKey)
+    const updatedObject = Single.updatePoints(
+      match,
+      matchNo,
+      playerNo,
+      event.target.value,
+      brktKey,
+      this.props.updateBracket.matches
     );
-    // const { updateBracket, dispatch } = this.props;
-    // const clonedBracket = _.cloneDeep(updateBracket);
-    // dispatch(
-    //   Update.updateEntireBracket(
-    //     clonedBracket,
-    //     matchNo,
-    //     playerNo,
-    //     event.target.value
-    //   )
-    // );
 
-    if (
-      match.player1Points !== undefined &&
-      match.player2Points !== undefined
-    ) {
-      updatedObject.push(Single.determineWinner(match, brktKey));
-    }
-
-    const updatedUserData = _.reduce(updatedObject, (accumulator, value) => {
-      return _.merge(accumulator, value);
-    });
-    console.log(updatedUserData);
-    //   dispatch(
-    //     Update.winnerLoser(match, matchNo, playerNames, seedsArr, brktKey)
-    //   );
-    // }
-
-    brktRef.update(updatedUserData, function(error) {
+    brktRef.update(updatedObject, function(error) {
       if (error) {
         console.log("Error updating data:", error);
       }
     });
   }
-
-  // componentDidUpdate() {
-  //   const { updateBracket, dispatch } = this.props;
-  //   const clonedBracket = _.cloneDeep(updateBracket);
-  //   dispatch(Update.updateEntireBracket(clonedBracket));
-  // }
 
   render() {
     const {
@@ -85,6 +57,7 @@ class UpdateMatch extends Component {
     player2Points === undefined
       ? (player2Points = "")
       : (player2Points = +player2Points);
+
     return (
       <div className="match" id={`match${match}`} style={matchStyle}>
         <div className="matchLabel">
@@ -97,7 +70,7 @@ class UpdateMatch extends Component {
         </div>
         <div className="pointsUpdate">
           <div className="play1Points">
-            {player1Edit ? (
+            {player1Name ? (
               <input
                 className="pointsInput form-control"
                 type="number"
@@ -115,7 +88,7 @@ class UpdateMatch extends Component {
             )}
           </div>
           <div className="play2Points">
-            {player2Edit ? (
+            {player2Name ? (
               <input
                 className="pointsInput form-control"
                 type="number"
@@ -140,7 +113,6 @@ class UpdateMatch extends Component {
 
 function mapStateToProps(state) {
   return {
-    createBracket: state.createBracket,
     updateBracket: state.updateBracket
   };
 }

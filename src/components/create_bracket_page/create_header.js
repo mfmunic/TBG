@@ -25,7 +25,6 @@ class CreateHeader extends Component {
         <div id="torName">
           <p>Name:</p>
           <input
-            // className="form-control"
             id="brktName"
             type="text"
             onChange={this.updateBrktName.bind(this)}

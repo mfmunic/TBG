@@ -1,0 +1,34 @@
+@media only screen and (max-width: 1685px) {
+  #title {
+    display: flex;
+    width: auto;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  #torTitle {
+    align-self: flex-start;
+    color: #012551;
+    text-shadow: 0 0 1px #fff;
+  }
+
+  #braTitle {
+    align-self: flex-start;
+    color: #012551;
+    text-shadow: 0 0 1px #fff;
+    margin-left: 0;
+  }
+
+  #genTitle {
+    align-self: flex-start;
+    color: #012551;
+    text-shadow: 0 0 1px #fff;
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 1420px) {
+  .restOfTitle {
+    display: none;
+  }
+}

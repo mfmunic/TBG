@@ -1,10 +1,10 @@
-import * as actionTypes from '../actionTypes';
+import * as actionTypes from "../actionTypes";
 
 const initialState = {
-  brktName: '',
+  brktName: "",
   noOfPlayers: 0,
   playerNames: [],
-  inputSwitch: 'Number'
+  inputSwitch: "Number"
 };
 
 export default function(state = initialState, action = {}) {
@@ -45,6 +45,12 @@ export default function(state = initialState, action = {}) {
         noOfPlayers: action.payload.noOfPlayers,
         playerNames: action.payload.playerNames
       };
+
+    // case actionTypes.PUBLISHED_BRKT:
+    //   return {
+    //     ...state,
+    //     brktKey: action.payload
+    //   };
 
     default:
       return state;

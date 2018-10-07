@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Title extends Component {
   render() {
@@ -6,15 +6,15 @@ class Title extends Component {
       <div id="title">
         <h1 id="torTitle">
           <strong>T</strong>
-          ournament
+          <span className="restOfTitle">ournament</span>
         </h1>
         <h1 id="braTitle">
           <strong>B</strong>
-          racket
+          <span className="restOfTitle">racket</span>
         </h1>
         <h1 id="genTitle">
           <strong>G</strong>
-          enerator
+          <span className="restOfTitle">enerator</span>
         </h1>
       </div>
     );

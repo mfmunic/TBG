@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+
 import * as Create from "../../modules/actions/createBracketPageActions";
 
 class CreateCreateButton extends Component {
-  createBracket(brktInfo, brktName, playerNames, event) {
-    this.props.dispatch(Create.addBrkt(brktInfo, brktName, playerNames));
+  createBracket(brktInfo, brktName, playerNames, history, event) {
+    const brktKey = Create.addBrkt(brktInfo, brktName, playerNames);
+    history.push(`/TBG/update?brkt=${brktKey}`);
   }
 
   render() {
@@ -15,6 +19,7 @@ class CreateCreateButton extends Component {
       playerNames
     } = this.props.createBracket;
 
+    const { history } = this.props;
     return (
       <div>
         {noOfPlayers > 1 ? (
@@ -26,7 +31,8 @@ class CreateCreateButton extends Component {
               this,
               brktInfo,
               brktName,
-              playerNames
+              playerNames,
+              history
             )}
           >
             Create Bracket
@@ -47,4 +53,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(CreateCreateButton);
+export default withRouter(connect(mapStateToProps)(CreateCreateButton));

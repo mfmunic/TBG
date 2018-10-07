@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 
 class CancelButton extends Component {
   goToAdmin(history, event) {
-    this.props.history.push("/TBG/admin");
+    history.push("/TBG/admin");
   }
 
   render() {
